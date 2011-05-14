@@ -1,0 +1,60 @@
+#!/bin/bash
+
+
+function usage {
+    echo "decrypt [-d outfile] source"
+    echo ""
+    echo "    -d: Decrypts the file to a clear text file for editing"
+    echo ""
+    echo "    Default behavior: Show all passwords in STDOUT"
+    exit 0
+}
+
+
+GPG=`which gpg`
+if [ $? != "0" ]; then
+    echo "gpg not installed or not in \$PATH"
+    exit 1
+fi
+
+OPTIND=1
+while getopts "hd:" opt
+do
+    case "$opt" in
+      "d")
+	OUTFILE=1
+        OUTFILENAME=$OPTARG
+        ;;
+      "h")
+	usage
+	;;
+      "?")
+        echo "Unknown option $OPTARG"
+	exit 1
+        ;;
+      ":")
+        echo "No argument value for option $OPTARG"
+	exit 1
+        ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [[ $# -ne 1 ]]; then
+    echo "No password file specified"
+    exit 2
+fi
+
+SOURCE=$1
+if [[ ! -f "$SOURCE" ]]; then
+    echo "Password file $SOURCE does not exist"
+    exit 3
+fi
+
+if [[ $OUTFILE -eq 1 ]] ; then
+    $GPG -q --no-mdc-warning --output $OUTFILENAME -d "$SOURCE"
+else
+    $GPG -q --no-mdc-warning -d "$SOURCE"
+fi
+
+

@@ -1,0 +1,9 @@
+[user]
+	name = saghul
+	email = saghul@gmail.com
+[color]
+	ui = auto
+[github]
+	user = saghul
+[core]
+	editor = vim --noplugin

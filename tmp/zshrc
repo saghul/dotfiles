@@ -1,0 +1,139 @@
+
+# Set/unset  shell options
+setopt INC_APPEND_HISTORY           # Don't wait until shell is killed to append entries to history
+setopt SHARE_HISTORY                # Share history among all instances
+setopt APPEND_HISTORY               # Append entries to history
+setopt CORRECT			    # Command correction
+setopt CORRECTALL		    # Spelling correction for all arguments
+setopt EXTENDED_HISTORY		    # Puts timestamps in the history
+setopt ALL_EXPORT                   # All parameters subsequently defined are automatically exported
+setopt NOTIFY                       # Report the status of background jobs immediately
+setopt GLOBDOTS                     # Let files beginning with a . be matched without explicitly specifying the dot
+setopt AUTOCD                       # Change to directory just by entering its name
+setopt HISTIGNOREDUPS               # Prevents the current line from being saved in the history if it is the same as the previous one
+setopt CDABLEVARS                   # Resolve variables if used on cd command
+setopt AUTOLIST                     # Always list options on ambiguous completion
+setopt PUSHDSILENT                  # Don't print directory stack every time we do a cd
+setopt EXTENDEDGLOB                 # Additional file globbing features
+unsetopt BG_NICE		    # Do NOT nice bg commands
+unsetopt MENUCOMPLETE                 # Complete when TAB pressed multiple times
+
+# Unknown
+# setopt   longlistjobs
+# setopt   autoresume 
+# setopt mailwarning
+# unsetopt autoparamslash
+
+# Load some modules
+zmodload -a zsh/stat stat
+zmodload -a zsh/zpty zpty
+zmodload -a zsh/zprof zprof
+zmodload -ap zsh/mapfile mapfile
+
+# Environment
+PATH="$HOME/bin:$PATH"
+HISTFILE=$HOME/.zhistory
+HISTSIZE=1000
+SAVEHIST=1000
+HOSTNAME="`hostname`"
+PAGER='less'
+EDITOR='vim'
+
+# Colors
+autoload colors zsh/terminfo
+if [[ "$terminfo[colors]" -ge 8 ]]; then
+    colors
+fi
+for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+    (( count = $count + 1 ))
+done
+PR_NO_COLOR="%{$terminfo[sgr0]%}"
+PS1="$PR_BLUE%n$PR_NO_COLOR@$PR_GREEN%m$PR_NO_COLOR:$PR_RED%2c$PR_NO_COLOR%(!.#.$) "
+RPS1="$PR_LIGHT_YELLOW(%D{%d-%m %H:%M})$PR_NO_COLOR"
+
+# Language
+LANG='en_US.UTF-8'
+
+# Aliases
+alias ls='ls --color=auto'
+alias ll='ls -lF -h'
+alias la='ls -lFa -h'
+alias l='ls -CF -h'
+
+#alias ..='cd ..'
+alias cd..='cd ..'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias ack='ack-grep'
+alias syslog='tail -f /var/log/syslog'
+alias vim='vim -p'
+alias vi='vim'
+
+# Work
+alias work='cd ~/work/ag-projects/'
+export DEBEMAIL="Saul Ibarra <saul@ag-projects.com>"
+
+# Always dump the core
+ulimit -c unlimited
+
+# Don't export stuff beyond this point
+unsetopt ALL_EXPORT
+
+# Key bindings
+bindkey "^?" backward-delete-char
+bindkey "^r" history-incremental-search-backward    # Search history
+bindkey ' ' magic-space                             # also do history expansion on space
+#bindkey '^I' complete-word                          # complete on tab, leave expansion to _expand
+
+# Completion
+autoload -U compinit
+compinit
+
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
+
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
+zstyle ':completion:*' menu select=1 _complete _ignored _approximate
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+
+# list of completers to use
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+
+# allow one error for every three characters typed in approximate completer
+zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX+$#SUFFIX)/2 )) numeric )'
+
+# insert all expansions for expand completer
+zstyle ':completion:*:expand:*' tag-order all-expansions
+
+# formatting and messages
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
+
+# match uppercase from lowercase
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# offer indexes before parameters in subscripts
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+
+# Filename suffixes to ignore during completion (except after rm command)
+zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' '*?.old' '*?.bak'
+
+# SSH Completion
+zstyle ':completion:*:scp:*' tag-order files users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:scp:*' group-order files all-files users hosts-domain hosts-host hosts-ipaddr
+zstyle ':completion:*:ssh:*' tag-order users 'hosts:-host hosts:-domain:domain hosts:-ipaddr"IP\ Address *'
+zstyle ':completion:*:ssh:*' group-order hosts-domain hosts-host users hosts-ipaddr
+
+zstyle '*' single-ignored show
+

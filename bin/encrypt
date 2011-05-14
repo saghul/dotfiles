@@ -1,0 +1,74 @@
+#!/bin/bash
+
+
+function usage {
+    echo "encrypt [-d] sourcefile"
+    echo ""
+    echo "    -s: Use symmetric key for encryption"
+    echo ""
+    echo "    Default behavior: ask for user ID and use it for encryption"
+    exit 0
+}
+
+
+GPG=`which gpg`
+if [ "$?" != "0" ]; then
+	echo "gpg not installed or not in \$PATH"
+	exit 1
+fi
+
+OPTIND=1
+while getopts "hs" opt
+do
+    case "$opt" in
+      "s")
+	SYMMETRIC=1
+        ;;
+      "h")
+	usage
+	;;
+      "?")
+        echo "Unknown option $OPTARG"
+	exit 1
+        ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [[ $# -ne 1 ]]; then
+    echo "No password file specified"
+    exit 2
+fi
+
+SOURCE=$1
+if [[ ! -f "$SOURCE" ]]; then
+    echo "Password file $SOURCE does not exist"
+    exit 3
+fi
+
+if [[ -f "$SOURCE.gpg" ]]; then
+    mv -f "$SOURCE.gpg" "$SOURCE.gpg.bak"
+    BACKUP="yes"
+fi
+
+if [[ -z $SYMMETRIC ]]; then
+    $GPG --encrypt $SOURCE
+else
+    $GPG --symmetric $SOURCE
+fi
+
+if [ "$?" != "0" ]; then
+    echo "Something went wrong. Check that!"
+    if [ $BACKUP == "yes" ]; then
+        mv -f "$SOURCE.gpg.bak" "$SOURCE.gpg"
+    fi
+    exit 1
+fi
+
+rm -f $SOURCE
+if [ "$?" != "0" ]; then
+    echo "Warning: Cannot delete $SOURCE. Unencryted file remains"
+    exit 1
+fi
+
+
