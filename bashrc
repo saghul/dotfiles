@@ -23,8 +23,7 @@ done
 
 COLOR_RESET='\[\e[0m\]'
 
-if [ "`id -u`" -eq 0 ]
-then
+if [[ "`id -u`" -eq 0 ]]; then
     _PS1="$B_RED\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET# "
 else
     _PS1="$B_BLUE\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET$ "
@@ -33,15 +32,13 @@ fi
 function update_PS1()
 {
     nsh=$((SHLVL - 2))
-    if [ $nsh -gt 0 ]
-    then
+    if [[ $nsh -gt 0 ]]; then
         nsh="($nsh)"
     else
         nsh=""
     fi
     virtual=""
-    if [[ -n $VIRTUAL_ENV ]]
-    then
+    if [[ -n $VIRTUAL_ENV ]]; then
         virtual="(`basename \"$VIRTUAL_ENV\"`)"
     fi
     export PS1=$virtual$nsh$_PS1
