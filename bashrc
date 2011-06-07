@@ -49,9 +49,13 @@ function update_PS1()
 PROMPT_COMMAND=update_PS1
 
 # enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
+if [[ "$TERM" != "dumb" ]]; then
+    if [[ `uname` == "Linux"  ]]; then
+        eval "`dircolors -b`"
+        alias ls='ls --color=auto'
+    else
+        alias ls='ls -G'
+    fi
 fi
 
 # aliases
