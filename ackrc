@@ -1,0 +1,3 @@
+# add cython type
+--type-add=cython=.pxd,.pxi,.pyx
+
