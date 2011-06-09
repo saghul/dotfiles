@@ -86,6 +86,11 @@ fi
 # Home directory bin apps
 export PATH=$PATH:~/bin
 
+# Homebrew binaries
+if [[ `uname` == "Darwin"  ]]; then
+    export PATH=~/.homebrew/bin:$PATH
+fi
+
 # Always dump the core
 ulimit -c unlimited
 
