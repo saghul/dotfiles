@@ -84,7 +84,7 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # Home directory bin apps
-export PATH=$PATH:~/bin
+export PATH=~/bin:$PATH
 
 # Homebrew binaries
 if [[ `uname` == "Darwin"  ]]; then
