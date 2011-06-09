@@ -67,7 +67,10 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias ack='ack-grep'
+if hash "ack-grep" > /dev/null 2>&1; then
+    alias ack='ack-grep'
+fi
+
 alias du='du -sh'
 alias df='df -h'
 
