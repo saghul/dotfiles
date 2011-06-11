@@ -86,9 +86,15 @@ fi
 # Home directory bin apps
 export PATH=~/bin:$PATH
 
-# Homebrew binaries
+# Mac stuff
 if [[ `uname` == "Darwin"  ]]; then
-    export PATH=~/.homebrew/bin:$PATH
+    BREW_PATH=~/.homebrew
+    # brew path
+    export PATH=$BREW_PATH/bin:$BREW_PATH/sbin:$PATH
+    # bash completion
+    if [ -f $BREW_PATH/etc/bash_completion ]; then
+        source $BREW_PATH/etc/bash_completion
+    fi
 fi
 
 # Always dump the core
