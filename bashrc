@@ -95,6 +95,8 @@ if [[ `uname` == "Darwin"  ]]; then
     if [ -f $BREW_PATH/etc/bash_completion ]; then
         source $BREW_PATH/etc/bash_completion
     fi
+    # python path
+    export PYTHONPATH=$BREW_PATH/lib/python:$PYTHONPATH
 fi
 
 # Always dump the core
