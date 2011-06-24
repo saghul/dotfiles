@@ -56,6 +56,17 @@ if [[ "$TERM" != "dumb" ]]; then
 fi
 
 # aliases
+function _cd_work()
+{
+    for workdir in "$HOME/work/ag-projects" "$HOME/work/src"
+    do
+        if [[ -d "$workdir" ]]; then
+            cd $workdir
+            break
+        fi
+    done
+}
+
 alias ll='ls -lF -h'
 alias la='ls -lFa -h'
 alias l='ls -CF -h'
@@ -109,7 +120,7 @@ alias gvim='gvim -p'
 export EDITOR=vim
 
 # Work
-alias work='cd ~/work/ag-projects/'
+alias work=_cd_work
 export DEBEMAIL="Saul Ibarra <saul@ag-projects.com>"
 
 # language
