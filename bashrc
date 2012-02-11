@@ -86,8 +86,14 @@ alias du='du -sh'
 alias df='df -h'
 
 alias serve='python -m SimpleHTTPServer'
-alias syslog='tail -f /var/log/syslog'
-alias screen_off='xset dpms force off'
+if [[ `uname` == "Linux"  ]]; then
+    alias syslog='tail -f /var/log/syslog'
+else
+    alias syslog='tail -f /var/log/system.log'
+fi
+if [[ `uname` == "Linux"  ]]; then
+    alias screen-off='xset dpms force off'
+fi
 
 # Bash completion
 if [ -f /etc/bash_completion ]; then
