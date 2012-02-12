@@ -99,22 +99,16 @@ fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+if [[ `uname` == "Darwin"  ]]; then
+    if hash "brew" > /dev/null 2>&1; then
+        if [ -f `brew --prefix`/etc/bash_completion ]; then
+            . `brew --prefix`/etc/bash_completion
+        fi
+    fi
+fi
 
 # Home directory bin apps
 export PATH=~/bin:$PATH
-
-# Mac stuff
-if [[ `uname` == "Darwin"  ]]; then
-    BREW_PATH=~/.homebrew
-    # brew path
-    export PATH=$BREW_PATH/bin:$BREW_PATH/sbin:$PATH
-    # bash completion
-    if [ -f $BREW_PATH/etc/bash_completion ]; then
-        source $BREW_PATH/etc/bash_completion
-    fi
-    # python path
-    export PYTHONPATH=$BREW_PATH/lib/python:$PYTHONPATH
-fi
 
 # Always dump the core
 ulimit -c unlimited
