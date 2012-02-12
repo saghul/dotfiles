@@ -110,6 +110,9 @@ fi
 # Home directory bin apps
 export PATH=~/bin:$PATH
 
+# local sbin path
+export PATH=$PATH:/usr/local/sbin
+
 # Always dump the core
 ulimit -c unlimited
 
