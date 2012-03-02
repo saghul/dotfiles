@@ -86,13 +86,19 @@ alias du='du -sh'
 alias df='df -h'
 
 alias serve='python -m SimpleHTTPServer'
+
 if [[ `uname` == "Darwin"  ]]; then
     alias syslog='tail -f /var/log/system.log'
 else
     alias syslog='tail -f /var/log/syslog'
 fi
+
 if [[ `uname` == "Linux"  ]]; then
     alias screen-off='xset dpms force off'
+fi
+
+if [ -f /usr/local/bin/gdb ]; then
+    alias gdb='/usr/local/bin/gdb'
 fi
 
 # Bash completion
