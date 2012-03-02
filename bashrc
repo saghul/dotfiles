@@ -13,15 +13,32 @@ shopt -s checkwinsize
 
 # color prompt
 
-count=0
-for color in "BLACK" "RED" "GREEN" "YELLOW" "BLUE" "PURPLE" "CYAN" "WHITE"
-do
-    eval ${color}=`echo -ne \"'\[\e[0;3'$count'm\]'\"`
-    eval B_${color}=`echo -ne \"'\[\e[1;3'$count'm\]'\"`
-    (( count = $count + 1 ))
-done
+#count=0
+#for color in "BLACK" "RED" "GREEN" "YELLOW" "BLUE" "PURPLE" "CYAN" "WHITE"
+#do
+#    eval ${color}=`echo -ne \"'\[\e[0;3'$count'm\]'\"`
+#    eval B_${color}=`echo -ne \"'\[\e[1;3'$count'm\]'\"`
+#    (( count = $count + 1 ))
+#done
 
-COLOR_RESET='\[\e[0m\]'
+BLACK="\[\e[0;30m\]"
+B_BLACK="\[\e[1;30m\]"
+RED="\[\e[0;31m\]"
+B_RED="\[\e[1;31m\]"
+GREEN="\[\e[0;32m\]"
+B_GREEN="\[\e[1;32m\]"
+YELLOW="\[\e[0;33m\]"
+B_YELLOW="\[\e[1;33m\]"
+BLUE="\[\e[0;34m\]"
+B_BLUE="\[\e[1;34m\]"
+PURPLE="\[\e[0;35m\]"
+B_PURPLE="\[\e[1;35m\]"
+CYAN="\[\e[0;36m\]"
+B_CYAN="\[\e[1;36m\]"
+WHITE="\[\e[0;37m\]"
+B_WHITE="\[\e[1;37m\]"
+
+COLOR_RESET="\[\e[0m\]"
 
 if [[ "`id -u`" -eq 0 ]]; then
     _PS1="$B_RED\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET\\$ "
