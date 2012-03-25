@@ -133,8 +133,8 @@ fi
 # Home directory bin apps
 export PATH=~/bin:$PATH
 
-# local sbin path
-export PATH=$PATH:/usr/local/sbin
+# local paths
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # Always dump the core
 ulimit -c unlimited
