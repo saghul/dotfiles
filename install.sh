@@ -28,11 +28,7 @@ mkdir -p ~/.darcs
 
 ## git postinstall stuff
 # editor
-if [[ `uname` == "Darwin"  ]]; then
-    git config --global core.editor "mvim -f"
-else
-    git config --global core.editor "vim --noplugin"
-fi
+git config --global core.editor "vim"
 git config --global core.excludesfile ~/.gitignore
 # github token
 if [[ -f ~/.github_token ]]; then
