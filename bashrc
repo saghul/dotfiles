@@ -105,7 +105,7 @@ alias df='df -h'
 alias serve='python -m SimpleHTTPServer'
 
 if hash "tmux" > /dev/null 2>&1; then
-    alias tmux='tmux -2'
+    alias tmux='TMPDIR=/tmp tmux -2'
 fi
 
 if [[ `uname` == "Darwin"  ]]; then
