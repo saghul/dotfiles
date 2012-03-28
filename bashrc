@@ -48,7 +48,11 @@ fi
 
 function update_PS1()
 {
-    nsh=$((SHLVL - 2))
+    if [[ -n $TMUX ]]; then
+        nsh=$((SHLVL - 3))
+    else
+        nsh=$((SHLVL - 1))
+    fi
     if [[ $nsh -gt 0 ]]; then
         nsh="($nsh)"
     else
