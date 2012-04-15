@@ -1,3 +1,0 @@
-#!/bin/bash
-wine "$HOME/.wine/drive_c/Programs/Spotify/spotify.exe" /uri "$1"
-
