@@ -26,15 +26,9 @@ mkdir -p ~/bin
 mkdir -p ~/.darcs
 \cp -r darcs/* ~/.darcs/
 
-## git postinstall stuff
-# editor
+# git postinstall stuff
 git config --global core.editor "vim"
 git config --global core.excludesfile ~/.gitignore
-# github token
-if [[ -f ~/.github_token ]]; then
-    TOKEN=`cat ~/.github_token`
-    git config --global github.token $TOKEN
-fi
 # bash completion for Git
 read -p "Download bash completion file for Git (y/n)? "
 [ "$REPLY" == "y" ] && curl -s https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
