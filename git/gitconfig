@@ -6,4 +6,5 @@
 [github]
 	user = saghul
 [core]
-	editor = vim --noplugin
+	editor = vim
+	excludesfile = /Users/saghul/.gitignore
