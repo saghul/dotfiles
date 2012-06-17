@@ -62,7 +62,8 @@ function update_PS1()
     if [[ -n $VIRTUAL_ENV ]]; then
         virtual="(`basename \"$VIRTUAL_ENV\"`)"
     fi
-    export PS1=$virtual$nsh$_PS1
+    git_branch=$(__git_ps1 "(%s)")
+    export PS1=$git_branch$virtual$nsh$_PS1
 }
 PROMPT_COMMAND=update_PS1
 
