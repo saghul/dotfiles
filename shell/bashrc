@@ -41,9 +41,9 @@ B_WHITE="\[\e[1;37m\]"
 COLOR_RESET="\[\e[0m\]"
 
 if [[ "`id -u`" -eq 0 ]]; then
-    _PS1="$B_RED\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET\\$ "
+    _PS1="$B_RED\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET\n\\$ "
 else
-    _PS1="$B_BLUE\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET\\$ "
+    _PS1="$B_BLUE\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET\n\\$ "
 fi
 
 function update_PS1()
