@@ -14,6 +14,10 @@ set-window-option -g xterm-keys on
 # Allow scrolling and copying with mouse
 set -g mode-mouse on
 
+# Start counting from 1 for windows and panes
+set -g base-index 1
+set -g pane-base-index 1
+
 # Make clipboard work inside vim (OSX)
 set-option -g default-command "reattach-to-user-namespace -l bash -"
 
