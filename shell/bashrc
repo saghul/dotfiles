@@ -142,6 +142,9 @@ fi
 # Home directory bin apps
 export PATH=~/bin:$PATH
 
+# Cabal
+export PATH=~/.cabal/bin:$PATH
+
 # local paths
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
