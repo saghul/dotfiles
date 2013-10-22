@@ -34,6 +34,8 @@ install-misc:
 	ln -s `pwd`/misc/ackrc ~/.ackrc
 ifeq ($(shell uname), Darwin)
 	ln -s `pwd`/misc/tmux.conf.osx ~/.tmux.conf
+else
+	ln -s `pwd`/misc/tmux.conf.linux ~/.tmux.conf
 endif
 
 
