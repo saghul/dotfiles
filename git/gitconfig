@@ -13,3 +13,5 @@
 	st = status -sb
 [branch]
 	autosetuprebase = always
+[push]
+	default = simple
