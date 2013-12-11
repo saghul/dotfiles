@@ -18,8 +18,6 @@ install-git:
 	ln -s `pwd`/git/gitconfig ~/.gitconfig
 	ln -s `pwd`/git/gitignore ~/.gitignore
 	ln -s `pwd`/git/git-completion.bash ~/.git-completion.bash
-	git config --global core.editor "vim"
-	git config --global core.excludesfile ~/.gitignore
 
 install-darcs:
 	mkdir -p ~/.darcs
