@@ -99,6 +99,7 @@ function _tmux_new_or_attach()
     tmux attach-session -t $1
 }
 
+alias tmux='tmux -2'
 alias t=_tmux_new_or_attach
 
 alias ll='ls -lF -h'
