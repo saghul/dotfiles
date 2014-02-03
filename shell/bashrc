@@ -136,10 +136,6 @@ if [[ `uname` == "Linux"  ]]; then
     alias screen-off='xset dpms force off'
 fi
 
-if [ -f /usr/local/bin/gdb ]; then
-    alias gdb='/usr/local/bin/gdb'
-fi
-
 # Bash completion
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
