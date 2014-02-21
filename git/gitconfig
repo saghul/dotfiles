@@ -11,6 +11,8 @@
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	st = status -sb
+        last = rev-parse --short HEAD
+        distclean = clean -d -f -x
 [branch]
 	autosetuprebase = always
 [push]
