@@ -148,6 +148,12 @@ if [[ `uname` == "Darwin"  ]]; then
     fi
 fi
 
+# Terminal copy & paste
+if [[ `uname` != "Darwin"  ]]; then
+    alias pbcopy='xclip -selection c'
+    alias pbpaste='xclip -selection clipboard -o'
+fi
+
 # Home directory bin apps
 export PATH=~/bin:$PATH
 
