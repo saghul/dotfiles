@@ -46,6 +46,7 @@ else
     _PS1="$B_BLUE\u$COLOR_RESET@$B_GREEN\H$COLOR_RESET:$B_RED\w$COLOR_RESET\n\\$ "
 fi
 
+
 function update_PS1()
 {
     if [[ -n $TMUX ]]; then
@@ -60,10 +61,14 @@ function update_PS1()
     fi
     virtual=""
     if [[ -n $VIRTUAL_ENV ]]; then
-        virtual="(`basename \"$VIRTUAL_ENV\"`)"
+        virtual="(venv|`basename \"$VIRTUAL_ENV\"`)"
     fi
-    git_branch=$(__git_ps1 "(%s)")
-    export PS1=$git_branch$virtual$nsh$_PS1
+    git_branch=$(__git_ps1 "(git|%s)")
+    hg_branch=$(hg branch 2> /dev/null | awk '{print$1}')
+    if [[ "$hg_branch" != "" ]]; then
+        hg_branch="(hg|$hg_branch)"
+    fi
+    export PS1=$git_branch$hg_branch$virtual$nsh$_PS1
 }
 PROMPT_COMMAND=update_PS1
 
