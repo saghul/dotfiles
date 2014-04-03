@@ -133,8 +133,10 @@ fi
 
 if [[ `uname` == "Darwin"  ]]; then
     alias syslog='tail -f /var/log/system.log'
+    alias xopen='open'
 else
     alias syslog='tail -f /var/log/syslog'
+    alias xopen='xdg-open'
 fi
 
 if [[ `uname` == "Linux"  ]]; then
