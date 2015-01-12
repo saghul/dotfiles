@@ -158,8 +158,8 @@ fi
 
 # Terminal copy & paste
 if [[ `uname` != "Darwin"  ]]; then
-    alias pbcopy='xclip -selection c'
-    alias pbpaste='xclip -selection clipboard -o'
+    alias pbcopy='xclip -in -selection clipboard'
+    alias pbpaste='xclip -out -selection clipboard'
 fi
 
 # Home directory bin apps
@@ -175,9 +175,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 ulimit -c unlimited
 
 # ViM
-alias vim='vim -p'
 alias vi='vim'
-alias gvim='gvim -p'
 export EDITOR=vim
 
 # Work
