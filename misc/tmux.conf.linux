@@ -18,3 +18,8 @@ set -g mode-mouse on
 set -g base-index 1
 set -g pane-base-index 1
 
+# Vim mode
+setw -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-pipe 'xclip -in -selection clipboard'
+
