@@ -1,6 +1,7 @@
 [user]
 	name = Saúl Ibarra Corretgé
 	email = saghul@gmail.com
+	signingkey = AE9BC059
 [color]
 	ui = auto
 [github]
