@@ -1,7 +1,14 @@
 
-install: install-shell install-bin install-git install-darcs install-misc
+install: install-shell install-shline install-bin install-git install-darcs install-misc
 
-install-shell:
+install-shline:
+	rm -rf shline
+	git clone https://github.com/saghul/shline
+	cp `pwd`/shell/shline-config.py shline/config.py
+	cd shline && python2.7 ./install.py && cd ..
+	rm -rf shline
+
+install-shell: install-shline
 	rm -f ~/.profile
 	rm -f ~/.bashrc
 	ln -s `pwd`/shell/profile ~/.profile
@@ -35,5 +42,4 @@ ifeq ($(shell uname), Darwin)
 else
 	ln -s `pwd`/misc/tmux.conf.linux ~/.tmux.conf
 endif
-
 
