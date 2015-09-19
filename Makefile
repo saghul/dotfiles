@@ -35,8 +35,10 @@ install-darcs:
 
 install-misc:
 	rm -f ~/.ackrc
+	rm -f ~/.agignore
 	rm -f ~/.tmux.conf
 	ln -s `pwd`/misc/ackrc ~/.ackrc
+	ln -s `pwd`/misc/agignore ~/.agignore
 ifeq ($(shell uname), Darwin)
 	ln -s `pwd`/misc/tmux.conf.osx ~/.tmux.conf
 else
