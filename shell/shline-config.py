@@ -1,6 +1,7 @@
 
 SEGMENTS = [
     'virtual_env',
+    'nvm',
 
     'git',
     'hg',
@@ -12,6 +13,7 @@ SEGMENTS = [
 
     'newline',
 
+    'shlvl',
     'ssh',
     'read_only',
     'jobs',
