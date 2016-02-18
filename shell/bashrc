@@ -54,6 +54,10 @@ function _tmux_new_or_attach()
 alias tmux='tmux -2'
 alias t=_tmux_new_or_attach
 
+if hash "tmux" > /dev/null 2>&1; then
+    alias tmux='TMPDIR=/tmp tmux -2'
+fi
+
 alias ll='ls -lF -h'
 alias la='ls -lFa -h'
 alias l='ls -CF -h'
@@ -73,10 +77,6 @@ alias du='du -sh'
 alias df='df -h'
 
 alias serve='python -m SimpleHTTPServer'
-
-if hash "tmux" > /dev/null 2>&1; then
-    alias tmux='TMPDIR=/tmp tmux -2'
-fi
 
 if [[ `uname` == "Darwin"  ]]; then
     alias syslog='tail -f /var/log/system.log'
