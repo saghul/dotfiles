@@ -20,3 +20,7 @@
 	default = current
 [help]
 	autocorrect = 1
+[pager]
+        log = diff-highlight | less -R
+        show = diff-highlight | less -R
+        diff = diff-highlight | less -R
