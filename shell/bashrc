@@ -137,6 +137,7 @@ alias work=_cd_work
 export DEBEMAIL="Saul Ibarra <saul@ag-projects.com>"
 
 # language
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Virtualenv
