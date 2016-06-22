@@ -41,6 +41,7 @@ install-misc:
 	ln -s `pwd`/misc/agignore ~/.agignore
 ifeq ($(shell uname), Darwin)
 	ln -s `pwd`/misc/tmux.conf.osx ~/.tmux.conf
+	touch ~/.hushlogin
 else
 	ln -s `pwd`/misc/tmux.conf.linux ~/.tmux.conf
 endif
