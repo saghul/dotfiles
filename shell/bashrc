@@ -98,6 +98,8 @@ if [[ `uname` == "Linux"  ]]; then
     alias screen-off='xset dpms force off'
 fi
 
+alias timestamp='date +%Y-%m-%dT%H:%M:%S%z'
+
 # Bash completion
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
