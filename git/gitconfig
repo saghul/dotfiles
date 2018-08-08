@@ -24,3 +24,7 @@
         log = diff-highlight | less -R
         show = diff-highlight | less -R
         diff = diff-highlight | less -R
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
