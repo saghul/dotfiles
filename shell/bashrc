@@ -193,5 +193,7 @@ export DARCS_ALWAYS_COLOR=1
 export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
 
 # Extra customizations
-[[ -f ~/.bashrc-extra ]] && source ~/.bashrc-extra
+if [[ -f ~/.bashrc-extra ]]; then
+    source ~/.bashrc-extra
+fi
 
