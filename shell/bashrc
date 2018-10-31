@@ -12,12 +12,13 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 # prompt
+export GOPATH=${GOPATH:-~/go}
 function _update_ps1() {
-    local PREV_ERROR=$?
-    local JOBS=$(jobs -p | wc -l)
-    export PS1="$(python2.7 ~/.shline/shline.py --mode patched --prev-error $PREV_ERROR --jobs $JOBS 2> /dev/null)"
+    PS1="$($GOPATH/bin/powerline-go -error $? -colorize-hostname -newline -cwd-mode plain -modules ssh,gitlite,hg,venv,user,host,cwd)"
 }
-export PROMPT_COMMAND="_update_ps1"
+if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 # enable color support of ls and also add handy aliases
 if [[ "$TERM" != "dumb" ]]; then
