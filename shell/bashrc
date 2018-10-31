@@ -30,17 +30,6 @@ if [[ "$TERM" != "dumb" ]]; then
 fi
 
 # aliases
-function _cd_work()
-{
-    for workdir in "$HOME/work/ag-projects" "$HOME/work/src"
-    do
-        if [[ -d "$workdir" ]]; then
-            cd $workdir
-            break
-        fi
-    done
-}
-
 function _tmux_new_or_attach()
 {
     tmux has-session -t $1 2>/dev/null
@@ -146,10 +135,6 @@ ulimit -c unlimited
 # ViM
 alias vi='vim'
 export EDITOR=vim
-
-# Work
-alias work=_cd_work
-export DEBEMAIL="Saul Ibarra <saul@ag-projects.com>"
 
 # language
 export LC_ALL=en_US.UTF-8
