@@ -14,7 +14,7 @@ shopt -s checkwinsize
 # prompt
 export GOPATH=${GOPATH:-~/go}
 function _update_ps1() {
-    PS1="$($GOPATH/bin/powerline-go -error $? -colorize-hostname -newline -cwd-mode plain -modules ssh,gitlite,hg,venv,user,host,cwd)"
+    PS1="$($GOPATH/bin/powerline-go -error $? -colorize-hostname -newline -cwd-mode plain -modules ssh,git,hg,venv,user,host,cwd)"
 }
 if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
