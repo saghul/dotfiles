@@ -14,6 +14,8 @@
 	st = status -sb
         last = rev-parse --short HEAD
         distclean = clean -d -f -x
+        c = commit
+        ca = commit --amend --no-edit
 [branch]
 	autosetuprebase = always
 [push]
