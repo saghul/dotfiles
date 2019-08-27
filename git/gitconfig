@@ -32,3 +32,5 @@
 	autoStash = true
 [merge]
 	renameLimit = 9999
+[diff]
+	renameLimit = 9999
