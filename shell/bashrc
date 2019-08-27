@@ -98,13 +98,8 @@ alias timestamp='date +%Y-%m-%dT%H:%M:%S%z'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-if [[ `uname` == "Darwin"  ]]; then
-    if hash "brew" > /dev/null 2>&1; then
-        if [[ -f $(brew --prefix)/share/bash-completion/bash_completion ]]; then
-            . $(brew --prefix)/share/bash-completion/bash_completion
-        fi
-    fi
-fi
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Colored man pages
 man() {
