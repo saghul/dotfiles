@@ -195,3 +195,7 @@ if [[ -f ~/.bashrc-extra ]]; then
     source ~/.bashrc-extra
 fi
 
+
+# Wasmer
+export WASMER_DIR="/Users/saghul/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
