@@ -16,6 +16,8 @@
         distclean = clean -d -f -x
         c = commit
         ca = commit --amend --no-edit
+        co = checkout
+        blast = branch --sort=-committerdate
 [branch]
 	autosetuprebase = always
 [push]
