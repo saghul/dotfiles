@@ -36,3 +36,9 @@
 	renameLimit = 9999
 [diff]
 	renameLimit = 9999
+[http]
+	cookiefile = /Users/saghul/.gitcookies
+[init]
+	defaultBranch = master
+[rerere]
+	enabled = true
