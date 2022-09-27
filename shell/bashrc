@@ -157,9 +157,6 @@ then
     export PATH=~/src/depot_tools:${PATH}
 fi
 
-# Fastlane
-export PATH="$HOME/.fastlane/bin:$PATH"
-
 # Node
 NPM_PACKAGES="$HOME/.npm-packages"
 PATH="$NPM_PACKAGES/bin:$PATH"
