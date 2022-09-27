@@ -170,9 +170,14 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
-# Darcs
-export DARCS_PAGER="less -R"
-export DARCS_ALWAYS_COLOR=1
+# Wasmer
+export WASMER_DIR="$HOME/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# Rust
+if [[ -f ~/.cargo/env ]]; then
+    source ~/.cargo/env
+fi
 
 # Cleanup PATH
 export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
@@ -182,7 +187,3 @@ if [[ -f ~/.bashrc-extra ]]; then
     source ~/.bashrc-extra
 fi
 
-
-# Wasmer
-export WASMER_DIR="/Users/saghul/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
