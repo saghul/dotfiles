@@ -1,3 +1,0 @@
-#!/bin/sh
-
-colordiff -rN -u $1 $2 | diff-highlight

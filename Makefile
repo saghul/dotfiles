@@ -1,10 +1,7 @@
 
-install: install-shell install-powerline install-bin install-git install-darcs install-misc
+install: install-shell install-bin install-git install-misc
 
-install-powerline:
-	go get -u github.com/justjanne/powerline-go
-
-install-shell: install-powerline
+install-shell:
 	rm -f ~/.profile
 	rm -f ~/.bashrc
 	ln -s `pwd`/shell/profile ~/.profile
@@ -21,13 +18,6 @@ install-git:
 	ln -s `pwd`/git/gitconfig ~/.gitconfig
 	ln -s `pwd`/git/gitignore ~/.gitignore
 	ln -s `pwd`/git/git-completion.bash ~/.git-completion.bash
-
-install-darcs:
-	mkdir -p ~/.darcs
-	rm -f ~/.darcs/author
-	rm -f ~/.darcs/defaults
-	ln -s `pwd`/darcs/author ~/.darcs/author
-	ln -s `pwd`/darcs/defaults ~/.darcs/defaults
 
 install-misc:
 	rm -f ~/.ackrc

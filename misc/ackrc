@@ -1,5 +1,0 @@
-# add cython type
---type-set=cython=.pxd,.pxi,.pyx
-# ignore 'build' directories
---ignore-dir=build
-

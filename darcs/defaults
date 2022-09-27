@@ -1,5 +1,0 @@
-diff unified
-diff no-pause-for-gui
-diff diff-command colordiff2 %1 %2
-ALL set-scripts-executable
-
