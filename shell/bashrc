@@ -15,25 +15,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
-# prompt
-export GOPATH=${GOPATH:-~/go}
-function _update_ps1() {
-    PS1="$($GOPATH/bin/powerline-go -error $? -newline -cwd-mode plain -modules ssh,git,hg,venv,user,host,cwd)"
-}
-if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
-# enable color support of ls and also add handy aliases
-if [[ "$TERM" != "dumb" ]]; then
-    if [[ `uname` == "Linux"  ]]; then
-        eval "`dircolors -b`"
-        alias ls='ls --color=auto'
-    else
-        alias ls='ls -G'
-    fi
-fi
-
 # aliases
 function _tmux_new_or_attach()
 {
@@ -52,12 +33,20 @@ if hash "tmux" > /dev/null 2>&1; then
     alias tmux='TMPDIR=/tmp tmux -2'
 fi
 
-function _weather()
-{
-    curl -4 wttr.in/${1:-Amsterdam}
-}
+# ls aliases
+if hash "exa" > /dev/null 2>&1; then
+    alias ls='exa --icons'
+fi
 
-alias weather=_weather
+# enable color support of ls and also add handy aliases
+if [[ "$TERM" != "dumb" ]]; then
+    if [[ `uname` == "Linux"  ]]; then
+        eval "`dircolors -b`"
+        alias ls='ls --color=auto'
+    else
+        alias ls='ls -G'
+    fi
+fi
 
 alias ll='ls -lF -h'
 alias la='ls -lFa -h'
@@ -69,10 +58,6 @@ alias cd..='cd ..'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-
-if hash "ack-grep" > /dev/null 2>&1; then
-    alias ack='ack-grep'
-fi
 
 alias du='du -sh'
 alias df='df -h'
@@ -122,9 +107,6 @@ fi
 
 # Home directory bin apps
 export PATH=~/bin:~/.local/bin:$PATH
-
-# Cabal
-export PATH=~/.cabal/bin:$PATH
 
 # local paths
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -186,4 +168,16 @@ export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) prin
 if [[ -f ~/.bashrc-extra ]]; then
     source ~/.bashrc-extra
 fi
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
+
+# Prompt
+function set_win_title(){
+    echo -ne "\033]0; $(basename "$PWD") \007"
+}
+starship_precmd_user_func="set_win_title"
+
+eval "$(starship init bash)"
 
