@@ -9,6 +9,7 @@
 [core]
 	editor = vim
 	excludesfile = /home/saghul/.gitignore
+	pager = delta
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	st = status -sb
@@ -24,17 +25,15 @@
 	default = current
 [help]
 	autocorrect = 1
-[pager]
-        log = diff-highlight | less -R
-        show = diff-highlight | less -R
-        diff = diff-highlight | less -R
 [pull]
 	rebase = true
 [rebase]
 	autoStash = true
 [merge]
+        conflictstyle = diff3
 	renameLimit = 9999
 [diff]
+        colorMoved = default
 	renameLimit = 9999
 [http]
 	cookiefile = /Users/saghul/.gitcookies
@@ -42,3 +41,13 @@
 	defaultBranch = master
 [rerere]
 	enabled = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = Dracula
+
+[advice]
+	skippedCherryPicks = false
