@@ -1,0 +1,17 @@
+# python specific
+*.pyc
+build/*
+dist/*
+MANIFEST
+
+# Node specific
+node_modules/
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.swo
+*.out
+.idea

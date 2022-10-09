@@ -1,0 +1,53 @@
+[user]
+	name = Saúl Ibarra Corretgé
+	email = s@saghul.net
+	signingkey = AE9BC059
+[color]
+	ui = auto
+[github]
+	user = saghul
+[core]
+	editor = vim
+	excludesfile = /home/saghul/.gitignore
+	pager = delta
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	st = status -sb
+        last = rev-parse --short HEAD
+        distclean = clean -d -f -x
+        c = commit
+        ca = commit --amend --no-edit
+        co = checkout
+        blast = branch --sort=-committerdate
+[branch]
+	autosetuprebase = always
+[push]
+	default = current
+[help]
+	autocorrect = 1
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[merge]
+        conflictstyle = diff3
+	renameLimit = 9999
+[diff]
+        colorMoved = default
+	renameLimit = 9999
+[http]
+	cookiefile = /Users/saghul/.gitcookies
+[init]
+	defaultBranch = master
+[rerere]
+	enabled = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = Dracula
+
+[advice]
+	skippedCherryPicks = false
