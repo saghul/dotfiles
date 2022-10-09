@@ -1,0 +1,40 @@
+{
+    "editor.rulers": [80, 100, 120],
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "editor.fontFamily": "Source Code Pro",
+    "editor.fontSize": 16,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "flow.useNPMPackagedFlow": true,
+    "flow.runOnEdit": false,
+    "sync.askGistName": true,
+    "sync.autoDownload": true,
+    "sync.autoUpload": true,
+    "sync.gist": "72e60433ef1967e412d6d496b5500fe7",
+    "sync.forceUpload": true,
+    "explorer.confirmDelete": false,
+    "cmake.configureOnOpen": true,
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "editor.fontLigatures": false,
+    "workbench.editor.highlightModifiedTabs": true,
+    "window.titleBarStyle": "native",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.userWords": [
+        "tenv"
+    ],
+    "workbench.colorTheme": "Dracula",
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+    "gitlens.currentLine.enabled": false,
+    "editor.detectIndentation": false,
+    "prettier.tabWidth": 4,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
+}
