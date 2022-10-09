@@ -1,15 +1,11 @@
 
-install: install-shell install-bin install-git install-misc
+install: install-shell install-git install-misc
 
 install-shell:
 	rm -f ~/.profile
 	rm -f ~/.bashrc
 	ln -s `pwd`/shell/profile ~/.profile
 	ln -s `pwd`/shell/bashrc ~/.bashrc
-
-install-bin:
-	mkdir -p ~/bin
-	cp -f `pwd`/bin/* ~/bin/
 
 install-git:
 	rm -f ~/.gitconfig
