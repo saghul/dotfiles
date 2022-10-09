@@ -15,9 +15,13 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
+# my dotfiles
+function dotfiles() {
+    /usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+}
+
 # aliases
-function _tmux_new_or_attach()
-{
+function _tmux_new_or_attach() {
     tmux has-session -t $1 2>/dev/null
     if [ "$?" -eq 1 ] ; then
         # No session found
