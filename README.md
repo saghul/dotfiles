@@ -9,7 +9,7 @@ I'm using a *bare get repository* setup now.
 First, clone the (bare) repository:
 
 ```bash
-git clone --bare git@github.com:saghul/dotfiles.git ~/.dotfiles
+git clone --bare https://github.com/saghul/dotfiles.git ~/.dotfiles
 ```
 
 Prepare an alias to work with it:
