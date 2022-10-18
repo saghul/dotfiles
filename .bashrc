@@ -66,7 +66,7 @@ alias mv='mv -i'
 alias du='du -sh'
 alias df='df -h'
 
-alias serve='python -m SimpleHTTPServer'
+alias serve='python3 -m http.server'
 
 if [[ `uname` == "Darwin"  ]]; then
     alias syslog='tail -f /var/log/system.log'
