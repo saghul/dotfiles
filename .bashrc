@@ -166,7 +166,9 @@ if [[ -f ~/.cargo/env ]]; then
 fi
 
 # Ruby
-export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:${PATH}"
+if hash "ruby" > /dev/null 2>&1; then
+    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:${PATH}"
+fi
 
 # Cleanup PATH
 export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
