@@ -170,6 +170,9 @@ if hash "ruby" > /dev/null 2>&1; then
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:${PATH}"
 fi
 
+# KDE / Plasma
+export PLASMA_USE_QT_SCALING=1
+
 # Cleanup PATH
 export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
 
