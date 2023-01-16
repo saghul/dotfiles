@@ -10,3 +10,7 @@ TerminalColumns=120
 
 [Interaction Options]
 ColorFilterEnabled=false
+
+[Scrolling]
+HistoryMode=1
+HistorySize=2000
