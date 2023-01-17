@@ -115,6 +115,9 @@ export PATH=~/bin:~/.local/bin:$PATH
 # local paths
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
+# homebrew
+export PATH=/opt/homebrew/bin:$PATH
+
 # Always dump the core
 ulimit -c unlimited
 
