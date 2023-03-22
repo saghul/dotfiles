@@ -13,7 +13,6 @@
     "editor.renderControlCharacters": true,
     "editor.fontLigatures": false,
     "workbench.editor.highlightModifiedTabs": true,
-    "window.titleBarStyle": "native",
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -29,5 +28,7 @@
     "prettier.tabWidth": 4,
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
-    }
+    },
+    "window.commandCenter": true,
+    "window.titleBarStyle": "custom"
 }
