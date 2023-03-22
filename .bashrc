@@ -179,6 +179,9 @@ export PLASMA_USE_QT_SCALING=1
 # gh CLI
 eval "$(gh completion -s bash)"
 
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # Cleanup PATH
 export PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
 
