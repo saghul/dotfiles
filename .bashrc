@@ -87,8 +87,14 @@ alias timestamp='date +%Y-%m-%dT%H:%M:%S%z'
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
+if [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]]; then
+    export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
+    . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+fi
 
 # Colored man pages
 man() {
