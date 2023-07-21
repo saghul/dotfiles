@@ -152,18 +152,15 @@ then
     export PATH=~/src/depot_tools:${PATH}
 fi
 
-# Node
-NPM_PACKAGES="$HOME/.npm-packages"
-PATH="$NPM_PACKAGES/bin:$PATH"
-# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-unset MANPATH
-MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+# Node
+if hash "npm" > /dev/null 2>&1; then
+    source <(npm completion)
+fi
 
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
