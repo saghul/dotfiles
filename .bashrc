@@ -83,19 +83,6 @@ fi
 
 alias timestamp='date +%Y-%m-%dT%H:%M:%S%z'
 
-# Bash completion
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
-if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
-    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-    . "/usr/local/etc/profile.d/bash_completion.sh"
-fi
-if [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]]; then
-    export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
-    . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-fi
-
 # Colored man pages
 man() {
     env \
@@ -123,6 +110,19 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # homebrew
 export PATH=/opt/homebrew/bin:$PATH
+
+# Bash completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+if [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]]; then
+    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
+if [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]]; then
+    export BASH_COMPLETION_COMPAT_DIR="/opt/homebrew/etc/bash_completion.d"
+    . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+fi
 
 # Always dump the core
 ulimit -c unlimited
