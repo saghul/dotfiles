@@ -46,24 +46,25 @@ if hash "tmux" > /dev/null 2>&1; then
     alias tmux='TMPDIR=/tmp tmux -2'
 fi
 
-# ls aliases
-if hash "exa" > /dev/null 2>&1; then
-    alias ls='exa --icons'
-fi
-
 # enable color support of ls and also add handy aliases
 if [[ "$TERM" != "dumb" ]]; then
-    if [[ `uname` == "Linux"  ]]; then
-        eval "`dircolors -b`"
-        alias ls='ls --color=auto'
+    if hash "eza" > /dev/null 2>&1; then
+        alias ls='eza --icons'
+        alias l='ls -F -h --grid'
     else
-        alias ls='ls -G'
+        if [[ `uname` == "Linux"  ]]; then
+            eval "`dircolors -b`"
+            alias ls='ls --color=auto'
+        else
+            alias ls='ls -G'
+        fi
+
+        alias l='ls -CF -h'
     fi
 fi
 
 alias ll='ls -lF -h'
 alias la='ls -lFa -h'
-alias l='ls -CF -h'
 
 alias ..='cd ..'
 alias cd..='cd ..'
