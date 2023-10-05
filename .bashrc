@@ -12,6 +12,15 @@ export HISTCONTROL=ignoredups
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Home directory bin apps
+export PATH=~/bin:~/.local/bin:$PATH
+
+# local paths
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+# homebrew
+export PATH=/opt/homebrew/bin:$PATH
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
@@ -101,15 +110,6 @@ if [[ `uname` != "Darwin"  ]]; then
     alias pbcopy='xclip -in -selection clipboard'
     alias pbpaste='xclip -out -selection clipboard'
 fi
-
-# Home directory bin apps
-export PATH=~/bin:~/.local/bin:$PATH
-
-# local paths
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
-# homebrew
-export PATH=/opt/homebrew/bin:$PATH
 
 # Bash completion
 if [ -f /etc/bash_completion ]; then
