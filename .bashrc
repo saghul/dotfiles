@@ -20,6 +20,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # homebrew
 export PATH=/opt/homebrew/bin:$PATH
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
