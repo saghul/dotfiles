@@ -19,6 +19,7 @@
         co = checkout
         blast = branch --sort=-committerdate
         who = shortlog -sn
+        fixup = commit -a -m "fixup!"
 [branch]
 	autosetuprebase = always
 [push]
