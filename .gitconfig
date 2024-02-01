@@ -20,6 +20,7 @@
         blast = branch --sort=-committerdate
         who = shortlog -sn
         fixup = commit -a -m "fixup!"
+        authors  = shortlog -s -n
 [branch]
 	autosetuprebase = always
 [push]
