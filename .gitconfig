@@ -19,6 +19,7 @@
         co = checkout
         fixup = commit -a -m "fixup!"
         authors  = shortlog -sn
+        pushf = push --force-with-lease
 [branch]
 	autosetuprebase = always
 	sort = -committerdate
