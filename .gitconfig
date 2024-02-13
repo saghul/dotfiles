@@ -17,12 +17,11 @@
         c = commit
         ca = commit --amend --no-edit
         co = checkout
-        blast = branch --sort=-committerdate
-        who = shortlog -sn
         fixup = commit -a -m "fixup!"
-        authors  = shortlog -s -n
+        authors  = shortlog -sn
 [branch]
 	autosetuprebase = always
+	sort = -committerdate
 [push]
 	default = current
 [help]
@@ -53,3 +52,5 @@
 
 [advice]
 	skippedCherryPicks = false
+[column]
+	ui = auto
