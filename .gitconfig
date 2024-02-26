@@ -10,7 +10,7 @@
 	excludesfile = /home/saghul/.gitignore
 	pager = delta
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	l = log --color --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)' --abbrev-commit --
 	st = status -sb
         last = rev-parse --short HEAD
         distclean = clean -d -f -x
