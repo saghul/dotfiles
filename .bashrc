@@ -20,6 +20,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # homebrew
 export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
 export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
