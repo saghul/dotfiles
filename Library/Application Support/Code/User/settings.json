@@ -30,5 +30,6 @@
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "window.commandCenter": true,
-    "window.titleBarStyle": "custom"
+    "window.titleBarStyle": "custom",
+    "workbench.sideBar.location": "right"
 }
