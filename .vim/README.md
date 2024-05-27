@@ -6,7 +6,7 @@ Works on GNU/Linux and macOS.
 
 ## Before you continue reading
 
-You'll need ViM 8 or higher.
+You'll need ViM 8.2 or higher.
 
 ### Normal mode
 

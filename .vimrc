@@ -8,7 +8,6 @@ filetype plugin on
 filetype plugin indent on
 
 " color!
-packadd! dracula
 syntax on
 "" Adapted from https://vim.fandom.com/wiki/Highlight_unwanted_spaces
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
