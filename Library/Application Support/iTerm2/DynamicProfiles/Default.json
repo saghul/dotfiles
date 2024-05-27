@@ -349,6 +349,7 @@
                 "Red Component": 1
             },
             "Transparency": 0,
+            "Set Local Environment Vars" : 0,
             "Name": "AAA_Default",
             "Guid": "EE478141-A64E-4700-B40D-F1F6AAD3202C"
         }
