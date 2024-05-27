@@ -51,7 +51,7 @@ set incsearch
 set hlsearch
 
 " highlight mode for hlsearch
-set hl=l:Incsearch
+"set hl=l:Incsearch
 
 "ignore case when searching
 set ignorecase
