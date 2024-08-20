@@ -17,9 +17,10 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "cSpell.userWords": [
+        "mallocz",
         "tenv"
     ],
-    "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "Dracula Theme",
     "terminal.integrated.defaultLocation": "editor",
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
@@ -31,5 +32,10 @@
     },
     "window.commandCenter": true,
     "window.titleBarStyle": "custom",
-    "workbench.sideBar.location": "right"
+    "workbench.sideBar.location": "right",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "editor.unicodeHighlight.ambiguousCharacters": false
 }
