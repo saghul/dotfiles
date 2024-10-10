@@ -17,7 +17,7 @@
         b = branch
         c = commit
         ca = commit --amend --no-edit
-        cb = !sh -c 'git checkout $(git branch | fzf)'
+        cb = !sh -c 'git checkout $(git branch | fzf --height 10)'
         co = checkout
         fixup = commit -a -m "fixup!"
         authors  = shortlog -sn
