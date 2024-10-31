@@ -35,6 +35,7 @@
 	rebase = true
 [rebase]
 	autoStash = true
+	updateRefs = true
 [merge]
         conflictstyle = diff3
 	renameLimit = 9999
