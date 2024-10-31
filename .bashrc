@@ -173,6 +173,7 @@ export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # Rust
+export PATH=/opt/homebrew/opt/rustup/bin:$PATH
 if [[ -f ~/.cargo/env ]]; then
     source ~/.cargo/env
 fi
