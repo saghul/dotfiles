@@ -6,6 +6,7 @@ $hostname\
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
 $git_branch\
+$git_state\
 $git_status\
 [](fg:#FCA17D)\
 $line_break\
@@ -51,7 +52,11 @@ symbol = ""
 style = "bg:#FCA17D"
 format = '[ $symbol $branch ]($style)'
 
+[git_state]
+style = "bg:#FCA17D"
+format = '[\($state($progress_current/$progress_total)\)]($style)'
+
 [git_status]
 style = "bg:#FCA17D"
-format = '[$all_status$ahead_behind ]($style)'
+format = '[$conflicted$deleted$renamed$modified$typechanged$staged$ahead_behind ]($style)'
 
