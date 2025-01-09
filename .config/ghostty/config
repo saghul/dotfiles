@@ -5,6 +5,4 @@ shell-integration-features = no-cursor
 font-family = "SauceCodePro Nerd Font Mono"
 font-size = 16
 
-term = xterm-256color
-
 macos-titlebar-style = tabs
