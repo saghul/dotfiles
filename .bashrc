@@ -179,6 +179,7 @@ if [[ -f ~/.cargo/env ]]; then
 fi
 
 # Ruby
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 if hash "ruby" > /dev/null 2>&1; then
     export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:${PATH}"
 fi
