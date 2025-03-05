@@ -40,5 +40,6 @@
     "editor.unicodeHighlight.ambiguousCharacters": false,
     "breadcrumbs.enabled": false,
     "editor.minimap.enabled": false,
-    "security.workspace.trust.untrustedFiles": "open"
+    "security.workspace.trust.untrustedFiles": "open",
+    "github.copilot.nextEditSuggestions.enabled": true
 }
