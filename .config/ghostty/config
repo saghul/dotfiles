@@ -10,3 +10,8 @@ macos-titlebar-style = tabs
 keybind = super+f=write_screen_file:open
 
 window-inherit-working-directory = false
+
+keybind = global:cmd+alt+grave_accent=toggle_quick_terminal
+quick-terminal-position = center
+
+window-save-state = always
