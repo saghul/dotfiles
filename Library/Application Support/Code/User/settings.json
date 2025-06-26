@@ -17,6 +17,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "cSpell.userWords": [
+        "Flashrank",
         "mallocz",
         "tenv"
     ],
@@ -41,5 +42,6 @@
     "breadcrumbs.enabled": false,
     "editor.minimap.enabled": false,
     "security.workspace.trust.untrustedFiles": "open",
-    "github.copilot.nextEditSuggestions.enabled": true
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "chat.agent.enabled": true
 }
