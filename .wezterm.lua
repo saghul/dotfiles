@@ -8,5 +8,7 @@ config.color_scheme = 'Dracula (Official)'
 
 config.window_decorations = "RESIZE"
 
+config.audible_bell = "Disabled"
+
 return config
 
