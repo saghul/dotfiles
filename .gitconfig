@@ -23,6 +23,7 @@
         authors  = shortlog -sn
         pushf = push --force-with-lease
         pushff = push --force
+        uncommit = !sh -c 'git reset --soft HEAD^ && git restore --staged .'
 [branch]
 	autosetuprebase = always
 	sort = -committerdate
