@@ -15,3 +15,4 @@ keybind = global:cmd+alt+grave_accent=toggle_quick_terminal
 quick-terminal-position = center
 
 window-save-state = always
+keybind = shift+enter=text:\n
