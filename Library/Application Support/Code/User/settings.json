@@ -43,5 +43,6 @@
     "editor.minimap.enabled": false,
     "security.workspace.trust.untrustedFiles": "open",
     "github.copilot.nextEditSuggestions.enabled": true,
-    "chat.agent.enabled": true
+    "chat.agent.enabled": true,
+    "typescript.updateImportsOnFileMove.enabled": "never"
 }
