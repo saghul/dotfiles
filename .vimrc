@@ -9,18 +9,11 @@ filetype plugin indent on
 
 " color!
 syntax on
-"" Adapted from https://vim.fandom.com/wiki/Highlight_unwanted_spaces
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 colorscheme dracula
-match ExtraWhitespace /\t\+$/
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\t\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\t\+\%#\@<!$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\t\+$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+
+" highlight trailing whitespace
+match errorMsg /\t\+$/
+match errorMsg /\s\+$/
 
 " lines and cols in status line
 set ruler
