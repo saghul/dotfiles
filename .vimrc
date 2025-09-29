@@ -81,9 +81,6 @@ set tabpagemax=50
 " ignore files and folders from listings
 set wildignore+=.git/*,.svn/*,.hg/*,_darcs/*,build/*,dist/*,*.o,*.so,*.pyc,node_modules/
 
-" save OS for later checks
-let os = substitute(system('uname'), "\n", "", "")
-
 " viminfo options: http://vimdoc.sourceforge.net/htmldoc/usr_21.html#21.3
 set viminfo='100,<50,s10,h,!
 rviminfo
