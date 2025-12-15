@@ -24,6 +24,7 @@
         pushf = push --force-with-lease
         pushff = push --force
         uncommit = !sh -c 'git reset --soft HEAD^ && git restore --staged .'
+        amend = commit --amend --no-edit
 [branch]
 	autosetuprebase = always
 	sort = -committerdate
