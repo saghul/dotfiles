@@ -18,6 +18,9 @@ match errorMsg /\s\+$/
 " lines and cols in status line
 set ruler
 
+" show column indicator
+set colorcolumn=80,120
+
 " always show status line
 set laststatus=2
 
@@ -141,13 +144,11 @@ map <silent><F2> :set invnumber<CR>
 " use jj same as ESC
 imap jj <Esc>
 
-
 " standard cut/copy/paste keys
 vmap <C-c> "+yi
 vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
-
 
 " save file with sudo if not opened as root
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
