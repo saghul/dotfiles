@@ -61,4 +61,11 @@
 [advice]
 	skippedCherryPicks = false
 [column]
-	ui = auto
+    ui = auto
+
+# Custom work configs
+[includeIf "gitdir:~/work/8x8/"]
+    path = ~/.gitconfig-8x8
+[includeIf "gitdir:~/work/jitsi/"]
+    path = ~/.gitconfig-jitsi
+
