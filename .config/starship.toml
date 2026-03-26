@@ -59,4 +59,5 @@ format = '[\($state($progress_current/$progress_total)\)]($style)'
 [git_status]
 style = "bg:#FCA17D"
 format = '[$conflicted$deleted$renamed$modified$typechanged$staged$ahead_behind ]($style)'
+ignore_submodules = true
 
