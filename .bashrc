@@ -239,6 +239,7 @@ function set_win_title(){
 starship_precmd_user_func="set_win_title"
 
 eval "$(starship init bash)"
+PROMPT_COMMAND="stty sane; ${PROMPT_COMMAND}"
 
 
 # bun
