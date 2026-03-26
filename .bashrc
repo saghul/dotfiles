@@ -12,6 +12,12 @@ export HISTCONTROL=ignoredups
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Cache platform detection
+_UNAME=$(uname)
+_IS_LINUX=false; _IS_DARWIN=false
+[[ "$_UNAME" == "Linux" ]] && _IS_LINUX=true
+[[ "$_UNAME" == "Darwin" ]] && _IS_DARWIN=true
+
 # Home directory bin apps
 export PATH=~/bin:~/.local/bin:$PATH
 
@@ -57,8 +63,8 @@ if [[ "$TERM" != "dumb" ]]; then
         alias ls='eza --icons'
         alias l='ls -F -h --grid'
     else
-        if [[ `uname` == "Linux"  ]]; then
-            eval "`dircolors -b`"
+        if $_IS_LINUX; then
+            eval "$(dircolors -b)"
             alias ls='ls --color=auto'
         else
             alias ls='ls -G'
@@ -83,7 +89,7 @@ alias df='df -h'
 
 alias serve='python3 -m http.server'
 
-if [[ `uname` == "Darwin"  ]]; then
+if $_IS_DARWIN; then
     alias syslog='tail -f /var/log/system.log'
     alias xopen='open'
     alias ldd='otool -L'
@@ -92,7 +98,7 @@ else
     alias xopen='xdg-open'
 fi
 
-if [[ `uname` == "Linux"  ]]; then
+if $_IS_LINUX; then
     alias screen-off='xset dpms force off'
 fi
 
@@ -112,7 +118,7 @@ man() {
 }
 
 # Terminal copy & paste
-if [[ `uname` != "Darwin"  ]]; then
+if ! $_IS_DARWIN; then
     alias pbcopy='xclip -in -selection clipboard'
     alias pbpaste='xclip -out -selection clipboard'
 fi
@@ -160,12 +166,16 @@ fi
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" --no-use
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
-# Node
+# Node (cache completion to avoid slow npm startup)
+_npm_completion_cache="$TMPDIR/npm_completion.bash"
 if hash "npm" > /dev/null 2>&1; then
-    source <(npm completion)
+    if [[ ! -f "$_npm_completion_cache" ]]; then
+        npm completion > "$_npm_completion_cache" 2>/dev/null
+    fi
+    [[ -f "$_npm_completion_cache" ]] && source "$_npm_completion_cache"
 fi
 
 # Wasmer
@@ -178,17 +188,32 @@ if [[ -f ~/.cargo/env ]]; then
     source ~/.cargo/env
 fi
 
-# Ruby
+# Ruby (cache gem dir to avoid spawning ruby on every shell)
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-if hash "ruby" > /dev/null 2>&1; then
-    export PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:${PATH}"
+_gem_dir_cache="$TMPDIR/gem_user_dir"
+if [[ -f "$_gem_dir_cache" ]]; then
+    export PATH="$(cat "$_gem_dir_cache")/bin:${PATH}"
+elif hash "ruby" > /dev/null 2>&1; then
+    ruby -r rubygems -e 'puts Gem.user_dir' > "$_gem_dir_cache"
+    export PATH="$(cat "$_gem_dir_cache")/bin:${PATH}"
 fi
 
 # KDE / Plasma
 export PLASMA_USE_QT_SCALING=1
 
-# gh CLI
-eval "$(gh completion -s bash)"
+# gh CLI (lazy-load completion)
+_gh_completion_loaded=false
+_lazy_gh_completion() {
+    if ! $_gh_completion_loaded; then
+        source <(gh completion -s bash) 2>/dev/null
+        _gh_completion_loaded=true
+        # Re-trigger completion
+        __start_gh "${COMP_WORDS[@]}" 2>/dev/null
+    fi
+}
+if hash "gh" > /dev/null 2>&1; then
+    complete -o default -F _lazy_gh_completion gh
+fi
 
 # fzf
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
