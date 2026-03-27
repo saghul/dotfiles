@@ -233,13 +233,7 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # END_KITTY_SHELL_INTEGRATION
 
 # Prompt
-function set_win_title(){
-    echo -ne "\033]0; $(basename "$PWD") \007"
-}
-starship_precmd_user_func="set_win_title"
-
 eval "$(starship init bash)"
-PROMPT_COMMAND="stty sane; ${PROMPT_COMMAND}"
 
 
 # bun
