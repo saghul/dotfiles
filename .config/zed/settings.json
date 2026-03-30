@@ -1,13 +1,15 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "disable_ai": true,
+  "title_bar": {
+    "show_user_menu": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "ensure_final_newline_on_save": false,
+  "remove_trailing_whitespace_on_save": false,
   "agent": {
+    "button": false,
     "default_profile": "write",
     "always_allow_tool_actions": true,
     "dock": "left",
