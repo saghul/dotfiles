@@ -140,8 +140,14 @@ fi
 ulimit -c unlimited
 
 # ViM
-alias vi='vim'
-export EDITOR=vim
+if command -v nvim &>/dev/null; then
+    alias vim='nvim'
+    alias vi='nvim'
+    export EDITOR=nvim
+else
+    alias vi='vim'
+    export EDITOR=vim
+fi
 
 # language
 export LC_ALL=en_US.UTF-8
