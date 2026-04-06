@@ -6,7 +6,6 @@
 [github]
 	user = saghul
 [core]
-	editor = vim
 	excludesfile = /home/saghul/.gitignore
 	pager = delta
 [alias]
