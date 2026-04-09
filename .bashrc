@@ -241,6 +241,23 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # Prompt
 eval "$(starship init bash)"
 
+# Workaround for cmux bug: its rcfile runs `unset PROMPT_COMMAND` after
+# .bashrc is sourced, killing starship_precmd. Use a DEBUG trap to restore
+# starship into PROMPT_COMMAND once cmux integration finishes loading.
+# The DEBUG trap runs in the current shell (not a subshell), so the
+# PROMPT_COMMAND change persists. It self-removes after firing once.
+if [[ -n "${CMUX_SHELL_INTEGRATION_DIR:-}" ]]; then
+    _starship_cmux_fixup() {
+        if declare -F _cmux_prompt_command >/dev/null 2>&1 && \
+           [[ "${PROMPT_COMMAND:-}" != *starship_precmd* ]]; then
+            STARSHIP_PROMPT_COMMAND="${PROMPT_COMMAND}"
+            PROMPT_COMMAND="starship_precmd"
+        fi
+        trap - DEBUG
+    }
+    trap '_starship_cmux_fixup' DEBUG
+fi
+
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
