@@ -6,7 +6,7 @@
 [github]
 	user = saghul
 [core]
-	excludesfile = /home/saghul/.gitignore
+	excludesfile = ~/.gitignore
 	pager = delta
 [alias]
 	l = log --color --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)' --abbrev-commit --
@@ -44,7 +44,7 @@
         colorMoved = default
 	renameLimit = 9999
 [http]
-	cookiefile = /Users/saghul/.gitcookies
+	cookiefile = ~/.gitcookies
 [init]
 	defaultBranch = master
 [rerere]
