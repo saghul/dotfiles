@@ -1,54 +1,56 @@
 [user]
-	name = Saúl Ibarra Corretgé
-	email = s@saghul.net
+    name = Saúl Ibarra Corretgé
+    email = s@saghul.net
 [color]
-	ui = auto
+    ui = auto
 [github]
-	user = saghul
+    user = saghul
 [core]
-	excludesfile = ~/.gitignore
-	pager = delta
+    excludesfile = ~/.gitignore
+    pager = delta
 [alias]
-	l = log --color --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)' --abbrev-commit --
-	st = status -sb
-        last = rev-parse --short HEAD
-        distclean = clean -d -f -x
-        b = branch
-        c = commit
-        ca = commit --amend --no-edit
-        cb = !sh -c 'git checkout $(git branch | fzf --height 10)'
-        co = checkout
-        fixup = commit -a -m "fixup!"
-        authors  = shortlog -sn
-        pushf = push --force-with-lease
-        pushff = push --force
-        uncommit = !sh -c 'git reset --soft HEAD^ && git restore --staged .'
-        amend = commit --amend --no-edit
+    l = log --color --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)' --abbrev-commit --
+    lst = log --stat
+    st = status -sb
+    last = rev-parse --short HEAD
+    distclean = clean -d -f -x
+    b = branch
+    c = commit
+    ca = commit --amend --no-edit
+    cb = !sh -c 'git checkout $(git branch | fzf --height 10)'
+    co = checkout
+    fixup = commit -a -m "fixup!"
+    authors  = shortlog -sn
+    pushf = push --force-with-lease
+    pushff = push --force
+    uncommit = !sh -c 'git reset --soft HEAD^ && git restore --staged .'
+    amend = commit --amend --no-edit
+    who = !git shortlog -sne --no-merges HEAD | head -10
 [branch]
-	autosetuprebase = always
-	sort = -committerdate
+    autosetuprebase = always
+    sort = -committerdate
 [push]
-	default = current
-	autoSetupRemote = true
+    default = current
+    autoSetupRemote = true
 [help]
-	autocorrect = 1
+    autocorrect = 1
 [pull]
-	rebase = true
+    rebase = true
 [rebase]
-	autoStash = true
-	updateRefs = true
+    autoStash = true
+    updateRefs = true
 [merge]
-        conflictstyle = diff3
-	renameLimit = 9999
+    conflictstyle = diff3
+    renameLimit = 9999
 [diff]
-        colorMoved = default
-	renameLimit = 9999
+    colorMoved = default
+    renameLimit = 9999
 [http]
-	cookiefile = ~/.gitcookies
+    cookiefile = ~/.gitcookies
 [init]
-	defaultBranch = master
+    defaultBranch = master
 [rerere]
-	enabled = true
+    enabled = true
 [interactive]
     diffFilter = delta --color-only
 [delta]
@@ -58,7 +60,7 @@
     syntax-theme = Dracula
 
 [advice]
-	skippedCherryPicks = false
+    skippedCherryPicks = false
 [column]
     ui = auto
 
