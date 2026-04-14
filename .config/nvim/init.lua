@@ -102,6 +102,12 @@ vim.diagnostic.config({
 -- Built-in visual undo tree
 vim.cmd.packadd('nvim.undotree')
 
+-- External plugins (vim.pack)
+vim.pack.add({
+  'https://github.com/junegunn/fzf',
+  'https://github.com/junegunn/fzf.vim',
+})
+
 ----------------------------------------------------------------------
 -- Keymaps
 ----------------------------------------------------------------------
@@ -138,6 +144,11 @@ vim.keymap.set('', '<F2>', ':set invnumber<CR>', { silent = true })
 
 -- jj as Escape in insert mode
 vim.keymap.set('i', 'jj', '<Esc>')
+
+-- fzf
+vim.keymap.set('n', '<C-p>', ':Files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>f', ':Rg<CR>', { silent = true })
+vim.keymap.set('n', '<leader>b', ':Buffers<CR>', { silent = true })
 
 -- Clipboard operations
 vim.keymap.set('v', '<C-c>', '"+yi')
