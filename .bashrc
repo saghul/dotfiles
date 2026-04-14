@@ -222,6 +222,7 @@ if hash "gh" > /dev/null 2>&1; then
 fi
 
 # fzf
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
 [ -f /usr/share/fzf/completion.bash ] && source /usr/share/fzf/completion.bash
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
