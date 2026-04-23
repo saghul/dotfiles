@@ -99,4 +99,20 @@ PaperWM:bindHotkeys({
     --move_window_9 = {{"alt", "cmd", "shift"}, "9"}
 })
 
+-- Subscribe to windowFocused before PaperWM:start() so this callback runs
+-- before PaperWM's own handler clamps off-screen windows to the canvas edge.
+-- If the window was scrolled mostly off-screen, center it after PaperWM's
+-- tileSpace pass settles.
+PaperWM.window_filter:subscribe(hs.window.filter.windowFocused, function(win)
+    if not win or not PaperWM.state.isTiled(win:id()) then return end
+    local wf, sf = win:frame(), win:screen():frame()
+    local visible = math.max(0, math.min(wf.x + wf.w, sf.x + sf.w) - math.max(wf.x, sf.x))
+    if visible / wf.w >= 0.5 then return end
+    hs.timer.doAfter(0.05, function()
+        if hs.window.focusedWindow() == win then
+            PaperWM.windows.centerWindow()
+        end
+    end)
+end)
+
 PaperWM:start()
