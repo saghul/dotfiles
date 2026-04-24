@@ -8,7 +8,9 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
-[](fg:#FCA17D)\
+[](fg:#FCA17D bg:#9A348E)\
+[](fg:#9A348E)\
+$jobs\
 $line_break\
 $character
 """
@@ -16,7 +18,7 @@ $character
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
-# You can also replace your username with a neat symbol like  to save some space
+# You can also replace your username with a neat symbol like   to save some space
 [username]
 show_always = true
 style_user = "bg:#9A348E"
@@ -37,15 +39,15 @@ truncation_symbol = "…/"
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
-"Documents" = " "
+"Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
 # Keep in mind that the order matters. For example:
-# "Important Documents" = "  "
+# "Important Documents" = " 󰈙 "
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important  " = "  "
+# "Important 󰈙 " = " 󰈙 "
 
 [git_branch]
 symbol = ""
@@ -61,3 +63,9 @@ style = "bg:#FCA17D"
 format = '[$conflicted$deleted$renamed$modified$typechanged$staged$ahead_behind ]($style)'
 ignore_submodules = true
 
+[jobs]
+symbol_threshold = 1
+number_threshold = 1
+style = "bg:#F1FA8C fg:#282A36"
+# Standalone yellow pill: space, rounded yellow left cap, content, rounded yellow right cap.
+format = ' [](fg:#F1FA8C)[ $number ]($style)[](fg:#F1FA8C)'
