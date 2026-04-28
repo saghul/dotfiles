@@ -1,16 +1,14 @@
 format = """
-[](#9A348E)\
+[](fg:#9A348E)\
 $username\
 $hostname\
-[](bg:#DA627D fg:#9A348E)\
 $directory\
-[](fg:#DA627D bg:#FCA17D)\
 $git_branch\
 $git_state\
 $git_status\
-[](fg:#FCA17D bg:#9A348E)\
-[](fg:#9A348E)\
 $jobs\
+$time\
+[](fg:#6272A4)\
 $line_break\
 $character
 """
@@ -43,11 +41,6 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
-# Keep in mind that the order matters. For example:
-# "Important Documents" = " 󰈙 "
-# will not be replaced, because "Documents" was already substituted before.
-# So either put "Important Documents" before "Documents" or use the substituted version:
-# "Important 󰈙 " = " 󰈙 "
 
 [git_branch]
 symbol = ""
@@ -64,8 +57,14 @@ format = '[$conflicted$deleted$renamed$modified$typechanged$staged$ahead_behind 
 ignore_submodules = true
 
 [jobs]
+symbol = "✦"
 symbol_threshold = 1
 number_threshold = 1
 style = "bg:#F1FA8C fg:#282A36"
-# Standalone yellow pill: space, rounded yellow left cap, content, rounded yellow right cap.
-format = ' [](fg:#F1FA8C)[ $number ]($style)[](fg:#F1FA8C)'
+format = '[ $symbol $number ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#6272A4"
+format = '[ $time ]($style)'
