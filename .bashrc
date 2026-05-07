@@ -35,6 +35,9 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
+# make delta work with mouse scrolling
+export LESS='-R --mouse'
+
 # my dotfiles
 function dotfiles() {
     /usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
