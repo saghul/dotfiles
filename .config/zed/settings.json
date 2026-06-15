@@ -1,17 +1,26 @@
 {
+  "outline_panel": {
+    "dock": "right"
+  },
+  "git_panel": {
+    "dock": "right"
+  },
   "disable_ai": true,
   "title_bar": {
     "show_user_menu": false
   },
   "collaboration_panel": {
+    "dock": "right",
     "button": false
   },
   "ensure_final_newline_on_save": false,
   "remove_trailing_whitespace_on_save": false,
   "agent": {
+    "tool_permissions": {
+      "default": "allow"
+    },
     "button": false,
     "default_profile": "write",
-    "always_allow_tool_actions": true,
     "dock": "left",
     "default_model": {
       "provider": "zed.dev",
