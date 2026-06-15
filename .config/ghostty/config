@@ -1,6 +1,7 @@
 cursor-style = block
 cursor-style-blink = false
-shell-integration-features = no-cursor
+shell-integration = detect
+shell-integration-features = no-cursor, no-title
 
 font-family = "SauceCodePro Nerd Font Mono"
 font-size = 16
@@ -15,6 +16,6 @@ window-save-state = always
 
 keybind = global:cmd+alt+grave_accent=toggle_quick_terminal
 keybind = shift+enter=text:\n
-keybind = ctrl+z=text:\x1a
+#keybind = ctrl+z=text:\x1a
 
 macos-option-as-alt = true
