@@ -245,6 +245,18 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # Prompt
 eval "$(starship init bash)"
 
+# Pin the terminal title to the tilde-collapsed CWD.
+# We emit OSC 2 from the prompt only (PROMPT_COMMAND), never on preexec, so the
+# title shows the directory and does NOT change to whatever command is running.
+# Ghostty's own `title` shell feature must stay disabled
+# (shell-integration-features = ...,no-title) or it would overwrite this with
+# the command name on every preexec.
+_title_set_cwd() { printf '\033]2;%s\007' "${PWD/#$HOME/\~}"; }
+case ";${PROMPT_COMMAND:-};" in
+    *_title_set_cwd*) ;;
+    *) PROMPT_COMMAND="${PROMPT_COMMAND:+${PROMPT_COMMAND}; }_title_set_cwd" ;;
+esac
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
