@@ -15,3 +15,5 @@ node_modules/
 *.swo
 *.out
 .idea
+
+**/.claude/settings.local.json
