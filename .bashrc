@@ -179,13 +179,14 @@ export NVM_DIR="$HOME/.nvm"
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # Node (cache completion to avoid slow npm startup)
-_npm_completion_cache="$TMPDIR/npm_completion.bash"
-if hash "npm" > /dev/null 2>&1; then
-    if [[ ! -f "$_npm_completion_cache" ]]; then
-        npm completion > "$_npm_completion_cache" 2>/dev/null
-    fi
-    [[ -f "$_npm_completion_cache" ]] && source "$_npm_completion_cache"
+# Note: nvm is loaded with --no-use, so npm isn't on PATH at .bashrc time.
+# Generate the cache only when npm is available, but always source it if present
+# (the completion script only invokes npm later, at Tab-completion time).
+_npm_completion_cache="${TMPDIR:-/tmp}/npm_completion.bash"
+if [[ ! -f "$_npm_completion_cache" ]] && hash "npm" > /dev/null 2>&1; then
+    npm completion > "$_npm_completion_cache" 2>/dev/null
 fi
+[[ -f "$_npm_completion_cache" ]] && source "$_npm_completion_cache"
 
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
