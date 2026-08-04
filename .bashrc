@@ -159,6 +159,59 @@ export LANG=en_US.UTF-8
 # Bash completion for git
 [[ -s $HOME/.git-completion.bash ]] && source $HOME/.git-completion.bash
 
+# Change branch, worktree-aware (the `git cb` alias, but it can cd).
+# If the branch you pick is already checked out in another worktree, jump there
+# instead of failing with "already used by worktree". This has to be a shell
+# function: a git alias runs in a subprocess and cannot cd the calling shell.
+gcb() {
+    local cur line branch wtpath
+
+    cur=$(git rev-parse --show-toplevel 2>/dev/null) || {
+        echo "gcb: not a git repository" >&2
+        return 1
+    }
+
+    # branch <TAB> worktree path <TAB> display column.
+    # %(worktreepath) is empty for branches not checked out anywhere.
+    line=$(
+        git for-each-ref --sort=-committerdate --count=25 \
+            --format='%(refname:short)%09%(worktreepath)' refs/heads |
+        awk -F'\t' -v home="$HOME" -v cur="$cur" '
+            { b[NR] = $1; p[NR] = $2; if (length($1) > w) w = length($1) }
+            END {
+                for (i = 1; i <= NR; i++) {
+                    tag = ""
+                    if (p[i] != "") {
+                        d = p[i]
+                        if (index(d, home "/") == 1)
+                            d = "~" substr(d, length(home) + 1)
+                        tag = (p[i] == cur ? "* " : "> ") d
+                    }
+                    printf "%s\t%s\t%-*s  %s\n", b[i], p[i], w, b[i], tag
+                }
+            }' |
+        fzf --height 40% --reverse --delimiter='\t' --with-nth=3 \
+            --prompt='branch> '
+    ) || return 0   # cancelled
+
+    [ -n "$line" ] || return 0
+
+    branch=$(printf '%s' "$line" | cut -f1)
+    wtpath=$(printf '%s' "$line" | cut -f2)
+
+    if [ -z "$wtpath" ]; then
+        git checkout "$branch"
+    elif [ "$wtpath" = "$cur" ]; then
+        echo "Already on $branch"
+    elif [ -d "$wtpath" ]; then
+        cd "$wtpath" || return 1
+    else
+        echo "gcb: worktree for '$branch' is gone: $wtpath" >&2
+        echo "     run 'git worktree prune' to clear it" >&2
+        return 1
+    fi
+}
+
 # Android
 if [[ -d ~/Library/Android/sdk ]]
 then
