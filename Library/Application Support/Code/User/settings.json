@@ -18,7 +18,9 @@
     },
     "cSpell.userWords": [
         "Flashrank",
+        "function",
         "mallocz",
+        "Reson",
         "tenv"
     ],
     "workbench.colorTheme": "Dracula Theme",
@@ -44,5 +46,9 @@
     "security.workspace.trust.untrustedFiles": "open",
     "github.copilot.nextEditSuggestions.enabled": true,
     "chat.agent.enabled": true,
-    "typescript.updateImportsOnFileMove.enabled": "never"
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "lldb.suppressUpdateNotifications": true,
+    "[pico-8-lua]": {},
+    "pico8-ls.trace.server": "verbose",
+    "pico8runner.pico8Path": "C:\\Program Files (x86)\\PICO-8\\pico8.exe"
 }
