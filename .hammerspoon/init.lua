@@ -24,6 +24,7 @@ PaperWM.window_filter:setAppFilter("Firefox", { rejectTitles = "Picture%-in%-Pic
 PaperWM.window_filter:setAppFilter("Ghostty", { rejectTitles = "^$" })
 PaperWM.window_filter:rejectApp("GlobalProtect")
 PaperWM.window_filter:setAppFilter("Thunderbird", { rejectTitles = { "^Select Calendar", "^Sending", "^Write:" } })
+PaperWM.window_filter:rejectApp("Reminders")
 
 -- Key bindings
 PaperWM:bindHotkeys({
