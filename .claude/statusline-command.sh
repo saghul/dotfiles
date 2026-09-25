@@ -9,7 +9,7 @@ worktree=$(echo "$input" | jq -r '.worktree.name // empty')
 current_dir=$(echo "$input" | jq -r '.worktree.original_cwd // empty')
 rl_5h_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty' | awk '{printf "%.0f", $1}')
 rl_5h_reset=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
-rl_7d_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+rl_7d_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty' | awk '{printf "%.0f", $1}')
 rl_7d_reset=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
 
 if [ -n "$used" ]; then
